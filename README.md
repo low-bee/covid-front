@@ -1,5 +1,14 @@
 # covid
 
+## 项目运行步骤
+```
+npm install -g @vue/cli
+npm install echarts vue-echarts
+npm install @vue/composition-api
+
+vue create covid
+```
+
 ## Project setup
 ```
 npm install

@@ -1,17 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/covid.png">
+    <Covid msg="Welcome to Covid Analysis Page!"/>
+    <div id="echarts">
+      <CurrWorldwideDataEChart></CurrWorldwideDataEChart>
+    </div>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Covid from './components/Covid'
+import HelloWorld from './components/echarts/HelloWorld';
+import CurrWorldwideDataEChart from "./components/echarts/CurrWorldwideDataEChart";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Covid,
+    HelloWorld,
+    CurrWorldwideDataEChart
   }
 }
 </script>

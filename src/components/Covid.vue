@@ -7,6 +7,8 @@
           {{ item }}
         </option>
       </select>
+<!--  当用户选择一个国家，应该触发一个路由，这样就可以在不同的组件之间切换 -->
+      <button type="submit" @click="submitCountry">提交</button>
     </form>
   </div>
 </template>
@@ -20,14 +22,21 @@ export default {
   },
   data() {
     return {
-      countrySet: [],
+      countrySet: null,
       country: "",
       wordData: {},
+
     }
   },
 
   mounted: function () {
     this.getCountrySet()
+  },
+
+  watch: {
+    country: function (newValue) {
+      console.log(newValue);
+    }
   },
 
   methods: {
@@ -37,7 +46,7 @@ export default {
           .then(response => {
             if (response.status === 200) {
               // 在后端过滤数据，这样一方面前端得到的数据更少，而且前端也无需执行复杂的过滤逻辑
-              this.countrySet = response.data
+              this.countrySet = new Set(response.data);
             }
           })
           .catch(error => {
@@ -45,12 +54,26 @@ export default {
           })
     },
 
+    submitCountry: function () {
+      if (this.countrySet !== null && this.countrySet.indexOf(this.country) !== -1){
+
+        this.$http
+            .get('http://127.0.0.1:8081/'+ this.country +'/age')
+        .then(response => {
+          if (response.status === 200) {
+            console.log(response)
+          }
+        })
+      }
+
+    }
+
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 body {
   display: flex;
   align-items: center;
@@ -66,4 +89,5 @@ input {
   justify-content: center;
   margin: 0 auto;
 }
+
 </style>

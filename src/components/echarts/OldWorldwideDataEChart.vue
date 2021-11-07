@@ -1,19 +1,17 @@
 <template>
-  <div ref="curr" id="curr">
-    <v-chart id="curr_data" class="pip" :option="dataCurrFromBackend"></v-chart>
+  <div ref="old" id="old">
+    <v-chart id="done-data" class="pip" :option="dataFromBackend"></v-chart>
   </div>
 </template>
 
 <script>
 export default {
-  name: "CurrWorldwideDataEChart",
+  name: "OldWorldwideDataEChart",
   data() {
     return {
       worldData: {},
-
-      dataCurrFromBackend: {
-        lastUpdateTime:Date.now(),
-      }
+      dataFromBackend: {
+      },
     }
   },
   mounted() {
@@ -28,9 +26,9 @@ export default {
               // 保存一份原始数据
               this.worldData = response.data;
               //
-              this.dataCurrFromBackend = {
+              this.dataFromBackend = {
                 title: {
-                  text: this.worldData.lastUpdateTime.substr(0, 11) + "当日新增",
+                  text: this.worldData.lastUpdateTime.substr(0, 11) + "汇总数据",
                   left: "center"
                 },
                 tooltip: {
@@ -45,17 +43,17 @@ export default {
                 },
                 series: [
                   {
-                    name: "新增",
+                    name: "总",
                     type: "pie",
                     radius: "55%",
                     center: ["50%", "60%"],
                     data: [
                       // {value: this.worldData.confirm - this.worldData.confirmAdd, name: "confirm"},
-                      {value: this.worldData.confirmAdd, name: "确诊"},
+                      {value: this.worldData.confirm, name: "确诊"},
                       // {value: this.worldData.dead - this.worldData.deadAdd, name: "dead"},
-                      {value: this.worldData.deadAdd, name: "死亡"},
+                      {value: this.worldData.dead, name: "死亡"},
                       // {value: this.worldData.heal - this.worldData.healAdd, name: "heal"},
-                      {value: this.worldData.healAdd, name: "康复"},
+                      {value: this.worldData.heal, name: "康复"},
                     ],
                     emphasis: {
                       itemStyle: {
@@ -66,7 +64,7 @@ export default {
                     }
                   }
                 ]
-              }
+              };
             }
           }).catch(error => {
         console.log(error)
@@ -77,7 +75,7 @@ export default {
 </script>
 
 <style>
-#curr {
+#old {
   float: left;
   margin-top: 30px;
 }

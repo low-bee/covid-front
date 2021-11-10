@@ -60,6 +60,16 @@ export default {
   width: 400px;
   height: 400px;
 }
+.bar {
+  margin-right: 0;
+  width: 600px;
+  height: 400px;
+}
+.map {
+  margin-right: 0;
+  width: 600px;
+  height: 400px;
+}
 #echarts {
   float:right;
   display: inline;

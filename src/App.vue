@@ -70,6 +70,18 @@ export default {
   width: 600px;
   height: 400px;
 }
+.pie {
+  margin-right: 0;
+  width: 600px;
+  height: 400px;
+}
+
+.much-pip {
+  margin-right: 0;
+  width: 700px;
+  height: 600px;
+}
+
 #echarts {
   float:right;
   display: inline;

@@ -28,7 +28,7 @@
 
 <script>
   // 一个异步实例
-  import map from "../../js/map"
+  import map from "../../js/usa_map"
   import qs from "qs";
 
 

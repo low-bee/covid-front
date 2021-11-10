@@ -27,7 +27,7 @@
 
 <script>
 import qs from "qs";
-import pie from "../../js/pip"
+import pie from "../../js/world_pip"
 
 export default {
   name: "ContinentStatus",

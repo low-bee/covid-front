@@ -28,7 +28,7 @@
 
 <script>
 // 一个异步实例
-import bar from "../../js/bar"
+import bar from "../../js/usa_bar"
 import qs from "qs";
 
 export default {

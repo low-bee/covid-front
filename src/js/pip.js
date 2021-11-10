@@ -66,7 +66,7 @@ const getContinent = async function() {
             {   name:'南美洲',
                 type: 'pie',
                 radius: '20%',
-                center: ['75%', '33%'],
+                center: ['80%', '33%'],
                 encode: {
                     itemName: 'continent',
                     value: '南美洲'

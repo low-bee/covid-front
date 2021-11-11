@@ -3,12 +3,14 @@
     <form id="covid" class="country">
       <h1>{{ msg }}</h1>
 <!--  当用户选择一个国家，应该一个路由，这样就可以在不同的组件之间切换 -->
+      <router-link class="router-link" to="/" @click="submitCountry">世界</router-link>
+      <br/>
       <router-link class="router-link" to="/US" @click="submitCountry">美国</router-link>
-      <br/><br/>
+      <br/>
       <router-link class="router-link" to="/French" @click="submitCountry">法国</router-link>
-      <br/><br/>
+      <br/>
       <router-link class="router-link" to="/China" @click="submitCountry">中国</router-link>
-      <br/><br/>
+      <br/>
     </form>
   </div>
 </template>

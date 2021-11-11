@@ -1,12 +1,16 @@
+import axios from "axios";
+
+axios.get()
+
 const option = {
-    title: {
-        text: 'Stacked Line'
-    },
+    // title: {
+    //     text: '中国新冠疫情数据'
+    // },
     tooltip: {
         trigger: 'axis'
     },
     legend: {
-        data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+        data: ['现存确诊人数', '本地确诊人数(含输入病例)', '新增输入总数', '死亡率', '治愈率']
     },
     grid: {
         left: '3%',
@@ -29,35 +33,35 @@ const option = {
     },
     series: [
         {
-            name: 'Email',
+            name: '现存确诊人数',
             type: 'line',
             stack: 'Total',
             data: [120, 132, 101, 134, 90, 230, 210]
         },
         {
-            name: 'Union Ads',
+            name: '本地确诊人数(含输入病例)',
             type: 'line',
             stack: 'Total',
             data: [220, 182, 191, 234, 290, 330, 310]
         },
         {
-            name: 'Video Ads',
-            type: 'line',
-            stack: 'Total',
-            data: [150, 232, 201, 154, 190, 330, 410]
-        },
-        {
-            name: 'Direct',
+            name: '新增输入总数',
             type: 'line',
             stack: 'Total',
             data: [320, 332, 301, 334, 390, 330, 320]
         },
         {
-            name: 'Search Engine',
+            name: '死亡率',
             type: 'line',
             stack: 'Total',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-        }
+            data: [150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+            name: '治愈率',
+            type: 'line',
+            stack: 'Total',
+            data: [150, 232, 201, 154, 190, 330, 410]
+        },
     ]
 };
 

@@ -1,7 +1,7 @@
 <template>
-  <div id="continent-pie">
-    <h2 id="pie">
-      <a href="#pie">各个大洲新冠数据<small>(其他表示一些特殊位置（例如钻石公主号）)</small></a>
+  <div>
+    <h2 id="china-line">
+      <a href="#china-line">Pie chart <small>(with action dispatch)</small></a>
       <button
           :class="{
           round: true,
@@ -14,9 +14,8 @@
     <section v-if="expand.pie">
       <figure>
         <v-chart
-
-            class="much-pip"
-            :option="pieOption"
+            class="line"
+            :option="china_line"
             :init-options="initOptions"
             ref="pie"
             autoresize
@@ -27,16 +26,17 @@
 </template>
 
 <script>
+import china_line from "../../js/china_line";
 import qs from "qs";
-import pie from "../../js/world_pip"
 
 export default {
-  name: "ContinentStatus",
+  name: "ChinaDayStatusData",
   data() {
     const options = qs.parse(location.search, { ignoreQueryPrefix: true });
-    let pieOption = {}
+
     return {
-      pieOption,
+      china_line,
+
       expand: {
         bar: true,
         pie: true,
@@ -47,26 +47,15 @@ export default {
         connect: true,
         flight: true
       },
+
       initOptions: {
         renderer: options.renderer || "canvas"
       },
     }
-  },
-
-  mounted() {
-    pie.then(
-        value => {
-          this.pieOption = value;
-        }
-    )
   }
 }
 </script>
 
-<style>
-#continent-pie {
-  float: left;
-  margin-top: 30px;
-}
+<style scoped>
 
 </style>

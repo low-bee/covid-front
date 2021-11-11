@@ -1,7 +1,10 @@
 <template>
   <div id="word-component">
-    <CurrWorldwideDataEChart></CurrWorldwideDataEChart>
-    <OldWorldwideDataEChart></OldWorldwideDataEChart>
+    <div id="float-component">
+      <CurrWorldwideDataEChart></CurrWorldwideDataEChart>
+      <OldWorldwideDataEChart></OldWorldwideDataEChart>
+    </div>
+
     <ContinentStatus></ContinentStatus>
   </div>
 </template>
@@ -23,6 +26,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+  #word-component {
+    text-align: center;
+    border-radius: 20px;
+    width: 800px;
+    height: 10%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
 
 </style>

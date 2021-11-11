@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chart id="curr_data" class="bar" v-if="dataDeadFromBackendOption !== null" :option="dataDeadFromBackendOption"></v-chart>
+    <v-chart id="america_curr_data" class="bar" v-if="dataDeadFromBackendOption !== null" :option="dataDeadFromBackendOption"></v-chart>
   </div>
 </template>
 

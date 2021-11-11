@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/covid.png">
-    <Covid v-on:getCountry="getCountryData" msg="Welcome to Covid Analysis Page!"/>
-    <div id="echarts" >
-      <router-view></router-view>
-<!--      用router-view 替换当前的World-->
-<!--      <World></World>-->
-    </div>
+<!-- 调到中间 -->
+<!-- flex    -->
+    <div id= "center">
+      <img alt="covid" src="./assets/covid.png">
+      <Covid v-on:getCountry="getCountryData" msg="Welcome to Covid Analysis Page!"/>
+      <div id="router" >
+        <router-view></router-view>
+  <!--      用router-view 替换当前的World-->
+  <!--      <World></World>-->
+      </div>
 
+    </div>
   </div>
 </template>
 
@@ -47,43 +51,44 @@ export default {
 
 <style>
 #app {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  width: 100%;
+  height: 100%;
 }
-
+#center{
+  text-align: center;
+  margin-top: 30px;
+}
 .pip {
-  margin-right: 0;
   width: 400px;
   height: 400px;
 }
 .bar {
-  margin-right: 0;
-  width: 600px;
+  width: 800px;
+  height: 600px;
+}
+/*特殊化美国年龄数据*/
+#america_curr_data{
   height: 400px;
 }
 .map {
-  margin-right: 0;
-  width: 600px;
-  height: 400px;
-}
-.pie {
-  margin-right: 0;
-  width: 600px;
-  height: 400px;
-}
-
-.much-pip {
-  margin-right: 0;
-  width: 700px;
+  width: 800px;
   height: 600px;
 }
 
-#echarts {
-  float:right;
-  display: inline;
+.much-pip {
+  width: 800px;
+  height: 600px;
+}
+
+.line {
+  width: 600px;
+  height: 400px;
 }
 </style>

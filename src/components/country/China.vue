@@ -1,10 +1,18 @@
 <template>
-  <h1>一个中国组件</h1>
+  <div>
+    <ChinaDayStatusData></ChinaDayStatusData>
+  </div>
 </template>
 
 <script>
+import ChinaDayStatusData from "../echarts/ChinaDayStatusData";
+
 export default {
-  name: "China"
+
+  name: "China",
+  components: {
+    ChinaDayStatusData
+  }
 }
 </script>
 

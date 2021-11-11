@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 id="china-line">
-      <a href="#china-line">Pie chart <small>(with action dispatch)</small></a>
+      <a href="#china-line">中国新冠折线图</a>
       <button
           :class="{
           round: true,
@@ -9,7 +9,7 @@
         }"
           @click="expand.pie = !expand.pie"
           aria-label="toggle"
-      ></button>
+      >折叠</button>
     </h2>
     <section v-if="expand.pie">
       <figure>
@@ -17,7 +17,7 @@
             class="line"
             :option="china_line"
             :init-options="initOptions"
-            ref="pie"
+            ref="china_line"
             autoresize
         />
       </figure>
@@ -26,14 +26,14 @@
 </template>
 
 <script>
-import china_line from "../../js/china_line";
+import china_line_promise from "../../js/china_line";
 import qs from "qs";
 
 export default {
   name: "ChinaDayStatusData",
   data() {
     const options = qs.parse(location.search, { ignoreQueryPrefix: true });
-
+    let china_line = {}
     return {
       china_line,
 
@@ -52,6 +52,14 @@ export default {
         renderer: options.renderer || "canvas"
       },
     }
+  },
+
+  mounted() {
+    china_line_promise.then(
+        value => {
+          this.china_line = value
+        }
+    )
   }
 }
 </script>

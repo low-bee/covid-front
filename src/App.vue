@@ -91,4 +91,10 @@ export default {
   width: 600px;
   height: 400px;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+
+}
 </style>

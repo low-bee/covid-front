@@ -14,7 +14,6 @@ function convertContinentData(data) {
             continentData[3].push(continent.heal)
         }
     );
-    console.log(continentData)
     return continentData;
 
 }

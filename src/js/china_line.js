@@ -1,68 +1,97 @@
 import axios from "axios";
 
-axios.get()
+function covertChinaCovidData(data) {
+    const res = [];
+    res.push([])
+    res.push([])
+    res.push([])
+    res.push([])
+    for (let i = 0; i < data.length; i++) {
+        const item = data[i];
+        res[0].push(item.now_confirm);
+        res[1].push(item.local_confirm);
+        res[2].push(item.imported_case);
+        res[3].push(item.date);
+    }
+    console.log(res)
+    return res;
+}
 
-const option = {
-    // title: {
-    //     text: '中国新冠疫情数据'
-    // },
-    tooltip: {
-        trigger: 'axis'
-    },
-    legend: {
-        data: ['现存确诊人数', '本地确诊人数(含输入病例)', '新增输入总数', '死亡率', '治愈率']
-    },
-    grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-    },
-    toolbox: {
-        feature: {
-            saveAsImage: {}
+const getChinaStatus = async function(){
+    let chinaLine;
+    await axios.get("http://127.0.0.1:8081/china/status", {
+        params: {
+            country: 'china'
         }
-    },
-    xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [
-        {
-            name: '现存确诊人数',
-            type: 'line',
-            stack: 'Total',
-            data: [120, 132, 101, 134, 90, 230, 210]
+    }).then(response => {
+        if (response.status === 200){
+            // 二维[]
+            chinaLine = covertChinaCovidData(response.data)
+        }
+    })
+    const option = {
+        // title: {
+        //     text: '中国新冠疫情数据'
+        // },
+        tooltip: {
+            trigger: 'axis'
         },
-        {
-            name: '本地确诊人数(含输入病例)',
-            type: 'line',
-            stack: 'Total',
-            data: [220, 182, 191, 234, 290, 330, 310]
+        legend: {
+            data: ['现存确诊人数', '本地确诊人数(含输入病例)', '境外输入样例总数']
         },
-        {
-            name: '新增输入总数',
-            type: 'line',
-            stack: 'Total',
-            data: [320, 332, 301, 334, 390, 330, 320]
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
         },
-        {
-            name: '死亡率',
-            type: 'line',
-            stack: 'Total',
-            data: [150, 232, 201, 154, 190, 330, 410]
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
         },
-        {
-            name: '治愈率',
-            type: 'line',
-            stack: 'Total',
-            data: [150, 232, 201, 154, 190, 330, 410]
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: chinaLine[3]
         },
-    ]
-};
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name: '现存确诊人数',
+                type: 'line',
+                stack: 'Total',
+                data: chinaLine[0]
+            },
+            {
+                name: '本地确诊人数(含输入病例)',
+                type: 'line',
+                stack: 'Total',
+                data: chinaLine[1]
+            },
+            {
+                name: '境外输入样例总数',
+                type: 'line',
+                stack: 'Total',
+                data: chinaLine[2]
+            },
+            // {
+            //     name: '死亡率',
+            //     type: 'line',
+            //     stack: 'Total',
+            //     data: [150, 232, 201, 154, 190, 330, 410]
+            // },
+            // {
+            //     name: '治愈率',
+            //     type: 'line',
+            //     stack: 'Total',
+            //     data: [150, 232, 201, 154, 190, 330, 410]
+            // },
+        ]
+    };
 
-export default option;
+    return option
+}
+export default getChinaStatus();

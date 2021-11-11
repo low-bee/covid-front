@@ -1,7 +1,7 @@
 <template>
   <div id="continent-pie">
-    <h2 id="pie">
-      <a href="#pie">各个大洲新冠数据<small>(其他表示一些特殊位置（例如钻石公主号）)</small></a>
+    <h2 id="world-pie">
+      <a href="#world-pie">各个大洲新冠数据<small>(其他表示一些特殊位置（例如钻石公主号）)</small></a>
       <button
           :class="{
           round: true,
@@ -18,7 +18,7 @@
             class="much-pip"
             :option="pieOption"
             :init-options="initOptions"
-            ref="pie"
+            ref="much-pip"
             autoresize
         />
       </figure>
